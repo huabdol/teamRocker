@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations; // Added to use Attributes to define primary key, column constraints, etc.
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace RecipeOrganizerDatabase
 {
-    public class Recipe
+    public partial class Recipe
     {
-        [Key, Column(Order = 0)]
+        [Key]
         public int RecipeID { get; set; }
         [Required, MaxLength(50), Index(IsUnique =true)]
         public string Title { get; set; }
-        [Required]
+        
         public string Yield { get; set; }
-        [MaxLength(50)]
+        [MaxLength(300)]
         public string ServingSize { get; set; }
         [Required]
         public string Directions { get; set; }

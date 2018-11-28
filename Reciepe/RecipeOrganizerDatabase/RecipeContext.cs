@@ -7,9 +7,9 @@ using System.Data.Entity;
 
 namespace RecipeOrganizerDatabase
 {
-    public class RecipeContext: DbContext
+    public partial class RecipesContext: DbContext
     {
-        public RecipeContext() : base("RecipeContextDB") { }
+        public RecipesContext() : base("RecipesCAContext") { }
 
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }

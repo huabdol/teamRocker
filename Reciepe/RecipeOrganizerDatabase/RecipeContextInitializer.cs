@@ -9,21 +9,27 @@ using System.Xml;
 
 namespace RecipeOrganizerDatabase
 {
-    public class EFRecipeorganizer : DropCreateDatabaseIfModelChanges<RecipeContext>
+    public class RecipesContextInitializer : DropCreateDatabaseIfModelChanges<RecipesContext>
     {
-        protected override void Seed(RecipeContext context)
+        protected override void Seed(RecipesContext context)
         {
             //base.Seed(context);)
 
             List<Recipe> recipes = GetRecepiesFromXMLDocument();
 
-            foreach( Recipe recipe in recipes)
+            foreach (Recipe recipe in recipes)
 
             {
                 context.Recipes.Add(recipe);
             }
+            try
+            {
+                context.SaveChanges();
+            }
+            catch(Exception e)
+            {
 
-            context.SaveChanges();
+            }
 
             // Read the ingredients from xml and load to DB
 
@@ -41,8 +47,9 @@ namespace RecipeOrganizerDatabase
 
         static List<Recipe> GetRecepiesFromXMLDocument()
         {
+
             var recipeXML = (
-                from a in XDocument.Load(@"..\Recipes.xml").Descendants("Recipe")
+                from a in XDocument.Load(@"..\..\..\Recipes.xml").Descendants("Recipe")
                 select a).ToList();
 
             List<Recipe> recipes = new List<Recipe>(recipeXML.Count);
@@ -55,10 +62,11 @@ namespace RecipeOrganizerDatabase
 
                 recipe.RecipeID = int.Parse(rec.Element("RecipeID").Value);
                 recipe.Title = rec.Element("Title").Value;
-                recipe.Yield = rec.Element("Yield").Value;
-                recipe.ServingSize = rec.Element("ServingSize").Value;
+
+                recipe.Yield = rec.Element("Yield")?.Value;
+                recipe.ServingSize = rec.Element("ServingSize")?.Value;
                 recipe.Directions = rec.Element("Directions").Value;
-                recipe.Comment = rec.Element("Comment").Value;
+                recipe.Comment = rec.Element("Comment")?.Value;
                 recipe.RecipeType = rec.Element("RecipeType").Value;
 
                 recipes.Add(recipe);
@@ -70,7 +78,7 @@ namespace RecipeOrganizerDatabase
         static List<Ingredient> GetIngredientsFromXMLDocument()
         {
             var ingredientXML = (
-                from a in XDocument.Load(@"..\Ingredients.xml").Descendants("Ingredient")
+                from a in XDocument.Load(@"..\..\..\Ingredients.xml").Descendants("Ingredient")
                 select a).ToList();
 
             List<Ingredient> ingredients = new List<Ingredient>(ingredientXML.Count);
@@ -83,7 +91,7 @@ namespace RecipeOrganizerDatabase
 
                 ingredient.IngredientID = int.Parse(ing.Element("IngredientID").Value);
                 ingredient.RecipeID = int.Parse(ing.Element("RecipeID").Value);
-                ingredient.Description = ing.Element("Description").Value;
+                ingredient.Description = ing.Element("Description")?.Value;
 
 
                 ingredients.Add(ingredient);

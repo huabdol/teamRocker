@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reciepe", "Reciepe\Reciepe.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeOrganizerDatabase", "RecipeOrganizerDatabase\RecipeOrganizerDatabase.csproj", "{1E86244B-B28F-4299-8A57-581AEF692A11}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeTestdbInitializer", "RecipeTestdbInitializer\RecipeTestdbInitializer.csproj", "{CD4D29C1-A1A4-4559-9F78-5300512F7FE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1E86244B-B28F-4299-8A57-581AEF692A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E86244B-B28F-4299-8A57-581AEF692A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E86244B-B28F-4299-8A57-581AEF692A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD4D29C1-A1A4-4559-9F78-5300512F7FE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD4D29C1-A1A4-4559-9F78-5300512F7FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD4D29C1-A1A4-4559-9F78-5300512F7FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD4D29C1-A1A4-4559-9F78-5300512F7FE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

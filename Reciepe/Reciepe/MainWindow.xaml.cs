@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
 using RecipeOrganizerDatabase;
+using System.Xml.Linq;
 
 namespace Reciepe
 {
@@ -22,6 +23,7 @@ namespace Reciepe
     /// </summary>
     public partial class MainWindow : Window
     {
+        static RecipesContext recipesContext = null;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,22 +31,64 @@ namespace Reciepe
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Database.SetInitializer<RecipeContext>(new EFRecipeorganizer());
-            using (RecipeContext context = new RecipeContext())
+            Database.SetInitializer<RecipesContext>(new RecipesContextInitializer());
+            using (recipesContext = new RecipesContext())
             {
-                List<Recipe> recipes = (from a in context.Recipes
-                                        orderby a.Title
-                                        select a).ToList();
+                TitleListBox.DataContext = (from a in recipesContext.Recipes
+                                            orderby a.Title
+                                            select a).ToArray();
 
-                if (recipes.Count == 0)
-                {
-                    Console.WriteLine("\tNo recipes at this time.");
-                }
-                else
-                {
-                    //TitleListBox.DataContext = (from recipe in )
+            }
 
-                }
+
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            using (recipesContext = new RecipesContext())
+            {
+  
+            List<Recipe> recipes = (from a in recipesContext.Recipes
+                                    orderby a.RecipeID
+                                    select a).ToList();
+
+                XDocument document = new XDocument(
+                  new XDeclaration("1.0", "utf-8", "yes"),
+                  new XComment("Contents of authors table in Pubs database"),
+                  new XElement("Recipes",
+                      from r in recipes  
+                      select new XElement("Recipe",
+                                 new XElement("RecipeID", r.RecipeID),
+                                 new XElement("Title", r.Title),
+                                 new XElement("Yield", r.Yield),
+                                 new XElement("ServingSize", r.ServingSize),
+                                 new XElement("Directions", r.Directions),
+                                 new XElement("Comment", r.Comment),
+                                 new XElement("RecipeType", r.RecipeType))
+                  )
+                );
+
+                document.Save(@"..\..\..\Recipes.xml");
+
+                List<Ingredient> ingredients = (from i in recipesContext.Ingredients
+                                        orderby i.IngredientID
+                                        select i).ToList();
+
+                document = new XDocument(
+                  new XDeclaration("1.0", "utf-8", "yes"),
+                  new XComment("Contents of authors table in Pubs database"),
+                  new XElement("Ingredients",
+                      from i in ingredients 
+                      select new XElement("Ingredient",
+                                 new XElement("IngredientID", i.IngredientID),
+                                 new XElement("Description", i.Description),
+                                 new XElement("RecipeID", i.RecipeID))
+                  )
+                );
+
+                document.Save(@"..\..\..\Ingredients.xml");
+
+
             }
         }
     }
