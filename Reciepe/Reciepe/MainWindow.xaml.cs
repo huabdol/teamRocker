@@ -115,20 +115,34 @@ namespace Reciepe
             using (recipesContext = new RecipesContext())
             {
 
+                if (TitleListBox.SelectedItem != null)
+                {
+                    Recipe recipe = (Recipe)TitleListBox.SelectedItem;
+                    Ingredient ingredient = (from i in recipesContext.Ingredients where i.RecipeID == recipe.RecipeID select i).First();
 
-                Recipe recipe = (Recipe)TitleListBox.SelectedItem;
-                Ingredient ingredient = (from i in recipesContext.Ingredients where i.RecipeID == recipe.RecipeID select i).First();
 
-
-                TitleTB.Text = recipe.Title;
-                YieldTB.Text = recipe.Yield;
-                ServignSizeTB.Text = recipe.ServingSize;
-                DirectionsTB.Text = recipe.Directions;
-                CommentsTB.Text = recipe.Comment;
-                IngredientsTB.Text = ingredient.Description;
-                RecipeTypeTB.Text = recipe.RecipeType;
-
+                    TitleTB.Text = recipe.Title;
+                    YieldTB.Text = recipe.Yield;
+                    ServignSizeTB.Text = recipe.ServingSize;
+                    DirectionsTB.Text = recipe.Directions;
+                    CommentsTB.Text = recipe.Comment;
+                    IngredientsTB.Text = ingredient.Description;
+                    RecipeTypeTB.Text = recipe.RecipeType;
+                }
             }
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            TitleTB.Text = null;
+            YieldTB.Text = null;
+            ServignSizeTB.Text = null;
+            DirectionsTB.Text = null;
+            CommentsTB.Text = null;
+            IngredientsTB.Text = null;
+            RecipeTypeTB.Text = null;
+
+            TitleListBox.SelectedItem = null;
         }
 
         //private void Label_Initialized(object sender, EventArgs e)

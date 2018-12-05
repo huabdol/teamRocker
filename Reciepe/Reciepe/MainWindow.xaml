@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Reciepe"
         mc:Ignorable="d"
-        Title="MainWindow" Height="891.287" Width="1156.061" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="MainWindow" Height="891.287" Width="1515.572" Loaded="Window_Loaded" Closed="Window_Closed">
     <Grid Margin="0,0,61,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -91,6 +91,7 @@
             </Label.RenderTransform>
         </Label>
         <TextBox x:Name="IngredientsTB" HorizontalAlignment="Left" Height="87" Margin="645,584,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="429" IsReadOnly="True" Grid.Column="1"/>
+        <Button x:Name="RefreshButton" Content="Refresh" Grid.Column="1" HorizontalAlignment="Left" Margin="1147,73,0,0" VerticalAlignment="Top" Width="98" FontSize="18" Click="RefreshButton_Click"/>
 
     </Grid>
 </Window>
