@@ -10,39 +10,56 @@ using System.Xml;
 namespace RecipeOrganizerDatabase
 {
     public class RecipesContextInitializer : DropCreateDatabaseIfModelChanges<RecipesContext>
+    
     {
         protected override void Seed(RecipesContext context)
         {
             //base.Seed(context);)
 
-            List<Recipe> recipes = GetRecepiesFromXMLDocument();
-
-            foreach (Recipe recipe in recipes)
-
-            {
-                context.Recipes.Add(recipe);
-            }
+            List<Recipe> recipes = null;
             try
             {
+                recipes = GetRecepiesFromXMLDocument();
+                if (recipes.Count==0)
+                {
+                throw new Exception ();
+                }
+
+                foreach (Recipe recipe in recipes)
+
+                {
+                context.Recipes.Add(recipe);
+                }
+            
                 context.SaveChanges();
             }
             catch(Exception e)
             {
-
+                PrintAllInnerException(e);
             }
 
             // Read the ingredients from xml and load to DB
-
-            List<Ingredient> ingredients = GetIngredientsFromXMLDocument();
-
-            foreach (Ingredient ing in ingredients)
-
+            try
             {
-                context.Ingredients.Add(ing);
+                List<Ingredient> ingredients = GetIngredientsFromXMLDocument();
+
+                if (ingredients.Count == 0)
+                {
+                    throw new Exception();
+                }
+
+                foreach (Ingredient ing in ingredients)
+
+                {
+                    context.Ingredients.Add(ing);
+                }
+
+                context.SaveChanges();
             }
-
-            context.SaveChanges();
-
+            catch (Exception e)
+            {
+                PrintAllInnerException(e);
+            }
         }
 
         static List<Recipe> GetRecepiesFromXMLDocument()
@@ -97,6 +114,18 @@ namespace RecipeOrganizerDatabase
                 ingredients.Add(ingredient);
             }
             return ingredients;
+        }
+
+
+        public static string  PrintAllInnerException(Exception e)
+        {
+
+            if(null !=e.InnerException)
+            {
+                PrintAllInnerException(e);
+            }
+
+            return e.Message;
         }
     }
 }

@@ -204,8 +204,8 @@ calories.</Comment>
   <Recipe>
     <RecipeID>9</RecipeID>
     <Title>Tropical Fruit Compote</Title>
-    <Yield />
-    <ServingSize />
+    <Yield></Yield>
+    <ServingSize></ServingSize>
     <Directions>1.  In a saucepan combine 3/4 cup of water with the sugar,
 lemon juice, and lemon peel (and rum or vanilla extract if
 desired).  Bring to a boil, then reduce the heat and add the
@@ -329,7 +329,7 @@ with sleepover friends or your own family.</Comment>
     <RecipeID>12</RecipeID>
     <Title>Top Hat Pizza</Title>
     <Yield>1 serving      </Yield>
-    <ServingSize />
+    <ServingSize></ServingSize>
     <Directions>1. Peel and chop onion (see Cook's Note). Measure out 2 teaspoons and
 set aside. (Save the rest to use in another recipe.)
 2. Rinse bell pepper and place on cutting board. Remove seeds and
@@ -373,40 +373,40 @@ lunch, or supper.</Comment>
   <Recipe>
     <RecipeID>13</RecipeID>
     <Title>Cream Sauce</Title>
-    <Yield />
-    <ServingSize />
+    <Yield></Yield>
+    <ServingSize></ServingSize>
     <Directions>In blender put lime juice, cilantro and 2/3 of the jalapeno's. Blend
 until smooth. Add sour cream, blend and taste. Add salt and taste. Add
 remaining jalapeno's if necessary.</Directions>
-    <Comment />
+    <Comment></Comment>
     <RecipeType>Meal Item   </RecipeType>
   </Recipe>
   <Recipe>
     <RecipeID>14</RecipeID>
     <Title>Papaya Pineapple Relish</Title>
-    <Yield />
-    <ServingSize />
+    <Yield></Yield>
+    <ServingSize></ServingSize>
     <Directions>Mix together and let sit for 1/2 hour.</Directions>
-    <Comment />
+    <Comment></Comment>
     <RecipeType>Meal Item   </RecipeType>
   </Recipe>
   <Recipe>
     <RecipeID>15</RecipeID>
     <Title>Halibut - with papaya pineapple relish</Title>
-    <Yield />
-    <ServingSize />
+    <Yield></Yield>
+    <ServingSize></ServingSize>
     <Directions>Season the halibut and pan sear until done. Place rice in center of
 plate. Place fish in top of rice and top with the relish and then the
 fried carrot. Place sprig and lemon wedge on plate. Make sure to
 drizzle some of the relish liquid around the plate.</Directions>
-    <Comment />
+    <Comment></Comment>
     <RecipeType>Meal Item   </RecipeType>
   </Recipe>
   <Recipe>
     <RecipeID>16</RecipeID>
     <Title>Crab Cakes</Title>
-    <Yield />
-    <ServingSize />
+    <Yield></Yield>
+    <ServingSize></ServingSize>
     <Directions>In a large bowl put peppers and seasonings to taste. Add cream and
 crab being careful not to break up the crab too much. Add panko and
 coriander. Add beaten eggs and form patty to test for consistency. It
@@ -414,14 +414,14 @@ should be somewhat light, not a dense glass breaking cake. If okay,
 then form into 1 3/4 oz balls and shape into patties. Toss in panko
 and place in a hotel pan divided by wax paper. saute and serve with
 Jalapeno Cilantro cream</Directions>
-    <Comment />
+    <Comment></Comment>
     <RecipeType>Meal Item   </RecipeType>
   </Recipe>
   <Recipe>
     <RecipeID>17</RecipeID>
     <Title>Seafood Pineapple Ceviche</Title>
-    <Yield />
-    <ServingSize />
+    <Yield></Yield>
+    <ServingSize></ServingSize>
     <Directions>Mix the first 4 ingredients together and set aside.
 Fry the tortilla bowl by pushing down into fryer with the backside of
 a 6 oz ladle.
@@ -434,14 +434,14 @@ small scoop of rice in the center of the plate and place a tortilla
 bowl on the rice.  Place the ceviche in the tortilla bowl and garnish
 with scallop on the half shell, fried tortilla chips and fried
 parsley.</Directions>
-    <Comment />
+    <Comment></Comment>
     <RecipeType>Meal Item   </RecipeType>
   </Recipe>
   <Recipe>
     <RecipeID>18</RecipeID>
     <Title>Shrimp Scampi</Title>
-    <Yield />
-    <ServingSize />
+    <Yield></Yield>
+    <ServingSize></ServingSize>
     <Directions>Start with a hot pan. Add tbsp of olive oil. Add shrimp and saute for
 2 minutes. Add garlic and saute until toasted. Add tomatoes and
 deglaze with sherry. Season with salt and pepper. Finish with butter
@@ -452,18 +452,18 @@ and add fresh basil.</Directions>
   <Recipe>
     <RecipeID>19</RecipeID>
     <Title>Rustic sundried tomato and walnut pesto</Title>
-    <Yield />
-    <ServingSize />
+    <Yield></Yield>
+    <ServingSize></ServingSize>
     <Directions>Start with a hot pan. Add tbsp of olive oil. Add garlic and saute for
 2 minutes, let cool. Mix all ingredients together.</Directions>
-    <Comment />
+    <Comment></Comment>
     <RecipeType>Meal Item   </RecipeType>
   </Recipe>
   <Recipe>
     <RecipeID>20</RecipeID>
     <Title>Steamed Clams</Title>
-    <Yield />
-    <ServingSize />
+    <Yield></Yield>
+    <ServingSize></ServingSize>
     <Directions>Start with a hot pan. Add tbsp of olive oil. Add clams and saute for 2
 minutes. Add garlic and saute until toasted. Deglaze with white wine,
 season with chili flakes, and pepper. Do not salt as clams are
@@ -488,7 +488,7 @@ almost dry and then add heavy cream and clam juice. Simmer for ten
 minutes and then blend. Coat oysters with panko and fry until crispy.
 Saute prosciutto (how much depends on how much you like it) until
 crispy and add to soup along with fried oysters.</Directions>
-    <Comment />
+    <Comment></Comment>
     <RecipeType>Meal Item   </RecipeType>
   </Recipe>
 </Recipes>

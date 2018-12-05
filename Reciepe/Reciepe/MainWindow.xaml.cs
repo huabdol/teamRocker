@@ -27,19 +27,37 @@ namespace Reciepe
         public MainWindow()
         {
             InitializeComponent();
+            displayLabel.Content = null;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Database.SetInitializer<RecipesContext>(new RecipesContextInitializer());
-            using (recipesContext = new RecipesContext())
+            try
             {
-                TitleListBox.DataContext = (from a in recipesContext.Recipes
-                                            orderby a.Title
-                                            select a).ToArray();
+                Database.SetInitializer<RecipesContext>(new RecipesContextInitializer());
+                using (recipesContext = new RecipesContext())
+                {
+                    if (recipesContext.Recipes.Count() == 0)
+                    {
+                        throw new Exception();
+                    }
+                    TitleListBox.DataContext = (from a in recipesContext.Recipes
+                                                orderby a.Title
+                                                select a).ToArray();
 
+
+                }
+            }
+            catch (Exception ex)
+            {
+                displayMessage(RecipesContextInitializer.PrintAllInnerException(ex));
             }
 
+        }
+
+        public void displayMessage(string message)
+        {
+            displayLabel.Content = message;
 
         }
 
@@ -91,5 +109,31 @@ namespace Reciepe
 
             }
         }
+
+        private void TitleListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            using (recipesContext = new RecipesContext())
+            {
+
+
+                Recipe recipe = (Recipe)TitleListBox.SelectedItem;
+                Ingredient ingredient = (from i in recipesContext.Ingredients where i.RecipeID == recipe.RecipeID select i).First();
+
+
+                TitleTB.Text = recipe.Title;
+                YieldTB.Text = recipe.Yield;
+                ServignSizeTB.Text = recipe.ServingSize;
+                DirectionsTB.Text = recipe.Directions;
+                CommentsTB.Text = recipe.Comment;
+                IngredientsTB.Text = ingredient.Description;
+                RecipeTypeTB.Text = recipe.RecipeType;
+
+            }
+        }
+
+        //private void Label_Initialized(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }

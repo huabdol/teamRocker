@@ -5,9 +5,92 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Reciepe"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" Closed="Window_Closed">
-    <Grid>
-        <ListBox x:Name="TitleListBox" HorizontalAlignment="Left" Height="342" Margin="41,10,0,0" VerticalAlignment="Top" Width="719" ItemsSource="{Binding}"/>
+        Title="MainWindow" Height="891.287" Width="1156.061" Loaded="Window_Loaded" Closed="Window_Closed">
+    <Grid Margin="0,0,61,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="622*"/>
+
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="TitleListBox" HorizontalAlignment="Left" Height="661" Margin="39,10,0,0" VerticalAlignment="Top" Width="465" ItemsSource="{Binding}" Grid.Column="1" SelectionChanged="TitleListBox_SelectionChanged"/>
+        <Label x:Name="displayLabel" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="39,714,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="1046" Height="91"/>
+        <Label x:Name="TitleLabel" Content="Title:  " HorizontalAlignment="Left" Margin="515,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="55" Grid.Column="1" Height="41" FontSize="18" FontFamily="Times New Roman">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.205"/>
+                    <RotateTransform Angle="0.195"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="TitleTB" HorizontalAlignment="Left" Height="37" Margin="645,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="429" IsReadOnly="True" Grid.Column="1"/>
+        <Label x:Name="YieldLabel" Content="Yield:  " HorizontalAlignment="Left" Margin="516,91,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="54" Grid.Column="1" Height="41" FontSize="18" FontFamily="Times New Roman">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.205"/>
+                    <RotateTransform Angle="0.195"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="YieldTB" HorizontalAlignment="Left" Height="36" Margin="645,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="429" IsReadOnly="True" Grid.Column="1"/>
+        <Label x:Name="ServingSizeLabel" Content="Serving Size:  " HorizontalAlignment="Left" Margin="516,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="117" Grid.Column="1" Height="41" FontSize="18" FontFamily="Times New Roman">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.205"/>
+                    <RotateTransform Angle="0.195"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="ServignSizeTB" HorizontalAlignment="Left" Height="110" Margin="645,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="429" IsReadOnly="True" Grid.Column="1"/>
+        <Label x:Name="DirectionsLabel" Content="Directions:  " HorizontalAlignment="Left" Margin="516,287,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="103" Grid.Column="1" Height="41" FontSize="18" FontFamily="Times New Roman">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.205"/>
+                    <RotateTransform Angle="0.195"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="DirectionsTB" HorizontalAlignment="Left" Height="129" Margin="645,294,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="429" IsReadOnly="True" Grid.Column="1"/>
+        <Label x:Name="CommentsLabel" Content="Comments:  " HorizontalAlignment="Left" Margin="516,445,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="107" Grid.Column="1" Height="41" FontSize="18" FontFamily="Times New Roman">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.205"/>
+                    <RotateTransform Angle="0.195"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="CommentsTB" HorizontalAlignment="Left" Height="37" Margin="645,451,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="429" IsReadOnly="True" Grid.Column="1"/>
+        <Label x:Name="RecipeTypeLabel" Content="Recipe Type:  " HorizontalAlignment="Left" Margin="516,510,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="110" Grid.Column="1" Height="41" FontSize="18" FontFamily="Times New Roman">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.205"/>
+                    <RotateTransform Angle="0.195"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="RecipeTypeTB" HorizontalAlignment="Left" Height="36" Margin="645,517,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="429" IsReadOnly="True" Grid.Column="1"/>
+        <Label x:Name="IngredientsLabel" Content="Ingredients:  " HorizontalAlignment="Left" Margin="516,577,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="110" Grid.Column="1" Height="41" FontSize="18" FontFamily="Times New Roman">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.205"/>
+                    <RotateTransform Angle="0.195"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox x:Name="IngredientsTB" HorizontalAlignment="Left" Height="87" Margin="645,584,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="429" IsReadOnly="True" Grid.Column="1"/>
 
     </Grid>
 </Window>
