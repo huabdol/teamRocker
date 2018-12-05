@@ -63,54 +63,54 @@ namespace Reciepe
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            using (recipesContext = new RecipesContext())
-            {
-  
-            List<Recipe> recipes = (from a in recipesContext.Recipes
-                                    orderby a.RecipeID
-                                    select a).ToList();
+        //    using (recipesContext = new RecipesContext())
+        //    {
 
-                XDocument document = new XDocument(
-                  new XDeclaration("1.0", "utf-8", "yes"),
-                  new XComment("Contents of authors table in Pubs database"),
-                  new XElement("Recipes",
-                      from r in recipes  
-                      select new XElement("Recipe",
-                                 new XElement("RecipeID", r.RecipeID),
-                                 new XElement("Title", r.Title),
-                                 new XElement("Yield", r.Yield),
-                                 new XElement("ServingSize", r.ServingSize),
-                                 new XElement("Directions", r.Directions),
-                                 new XElement("Comment", r.Comment),
-                                 new XElement("RecipeType", r.RecipeType))
-                  )
-                );
+        //    List<Recipe> recipes = (from a in recipesContext.Recipes
+        //                            orderby a.RecipeID
+        //                            select a).ToList();
 
-                document.Save(@"..\..\..\Recipes.xml");
+        //        XDocument document = new XDocument(
+        //          new XDeclaration("1.0", "utf-8", "yes"),
+        //          new XComment("Contents of authors table in Pubs database"),
+        //          new XElement("Recipes",
+        //              from r in recipes  
+        //              select new XElement("Recipe",
+        //                         new XElement("RecipeID", r.RecipeID),
+        //                         new XElement("Title", r.Title),
+        //                         new XElement("Yield", r.Yield),
+        //                         new XElement("ServingSize", r.ServingSize),
+        //                         new XElement("Directions", r.Directions),
+        //                         new XElement("Comment", r.Comment),
+        //                         new XElement("RecipeType", r.RecipeType))
+        //          )
+        //        );
 
-                List<Ingredient> ingredients = (from i in recipesContext.Ingredients
-                                        orderby i.IngredientID
-                                        select i).ToList();
+        //        document.Save(@"..\..\..\Recipes.xml");
 
-                document = new XDocument(
-                  new XDeclaration("1.0", "utf-8", "yes"),
-                  new XComment("Contents of authors table in Pubs database"),
-                  new XElement("Ingredients",
-                      from i in ingredients 
-                      select new XElement("Ingredient",
-                                 new XElement("IngredientID", i.IngredientID),
-                                 new XElement("Description", i.Description),
-                                 new XElement("RecipeID", i.RecipeID))
-                  )
-                );
+        //        List<Ingredient> ingredients = (from i in recipesContext.Ingredients
+        //                                orderby i.IngredientID
+        //                                select i).ToList();
 
-                document.Save(@"..\..\..\Ingredients.xml");
+        //        document = new XDocument(
+        //          new XDeclaration("1.0", "utf-8", "yes"),
+        //          new XComment("Contents of authors table in Pubs database"),
+        //          new XElement("Ingredients",
+        //              from i in ingredients 
+        //              select new XElement("Ingredient",
+        //                         new XElement("IngredientID", i.IngredientID),
+        //                         new XElement("Description", i.Description),
+        //                         new XElement("RecipeID", i.RecipeID))
+        //          )
+        //        );
+
+        //        document.Save(@"..\..\..\Ingredients.xml");
 
 
-            }
-        }
+          }
+    //}
 
-        private void TitleListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void TitleListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             using (recipesContext = new RecipesContext())
             {
@@ -145,9 +145,60 @@ namespace Reciepe
             TitleListBox.SelectedItem = null;
         }
 
-        //private void Label_Initialized(object sender, EventArgs e)
-        //{
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            displayMessage("The window cannot be closed, please use the exit button to close the application");
+        }
 
-        //}
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (recipesContext = new RecipesContext())
+            {
+
+                List<Recipe> recipes = (from a in recipesContext.Recipes
+                                        orderby a.RecipeID
+                                        select a).ToList();
+
+                XDocument document = new XDocument(
+                  new XDeclaration("1.0", "utf-8", "yes"),
+                  new XComment("Contents of authors table in Pubs database"),
+                  new XElement("Recipes",
+                      from r in recipes
+                      select new XElement("Recipe",
+                                 new XElement("RecipeID", r.RecipeID),
+                                 new XElement("Title", r.Title),
+                                 new XElement("Yield", r.Yield),
+                                 new XElement("ServingSize", r.ServingSize),
+                                 new XElement("Directions", r.Directions),
+                                 new XElement("Comment", r.Comment),
+                                 new XElement("RecipeType", r.RecipeType))
+                  )
+                );
+
+                document.Save(@"..\..\..\Recipes.xml");
+
+                List<Ingredient> ingredients = (from i in recipesContext.Ingredients
+                                                orderby i.IngredientID
+                                                select i).ToList();
+
+                document = new XDocument(
+                  new XDeclaration("1.0", "utf-8", "yes"),
+                  new XComment("Contents of authors table in Pubs database"),
+                  new XElement("Ingredients",
+                      from i in ingredients
+                      select new XElement("Ingredient",
+                                 new XElement("IngredientID", i.IngredientID),
+                                 new XElement("Description", i.Description),
+                                 new XElement("RecipeID", i.RecipeID))
+                  )
+                );
+
+                document.Save(@"..\..\..\Ingredients.xml");
+                
+            }
+            Environment.Exit(0);
+
+        }
     }
 }
