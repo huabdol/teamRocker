@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.Data.Entity;
 using RecipeOrganizerDatabase;
 using System.Xml.Linq;
+using SearchLibrary;
+
 
 namespace Reciepe
 {
@@ -37,15 +39,7 @@ namespace Reciepe
                 Database.SetInitializer<RecipesContext>(new RecipesContextInitializer());
                 using (recipesContext = new RecipesContext())
                 {
-                    if (recipesContext.Recipes.Count() == 0)
-                    {
-                        throw new Exception();
-                    }
-                    TitleListBox.DataContext = (from a in recipesContext.Recipes
-                                                orderby a.Title
-                                                select a).ToArray();
-
-
+                    RefreshTitleBox();
                 }
             }
             catch (Exception ex)
@@ -55,6 +49,18 @@ namespace Reciepe
 
         }
 
+        public void RefreshTitleBox()
+        {
+            if (recipesContext.Recipes.Count() == 0)
+            {
+                throw new Exception();
+            }
+            TitleListBox.DataContext = (from a in recipesContext.Recipes
+                                        orderby a.Title
+                                        select a).ToArray();
+            displayLabel.Content = null;
+
+        }
         public void displayMessage(string message)
         {
             displayLabel.Content = message;
@@ -143,6 +149,10 @@ namespace Reciepe
             RecipeTypeTB.Text = null;
 
             TitleListBox.SelectedItem = null;
+            using (recipesContext = new RecipesContext())
+            {
+                RefreshTitleBox();
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -200,5 +210,59 @@ namespace Reciepe
             Environment.Exit(0);
 
         }
+
+        private void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            SearchDialogue searchDialogue = new SearchDialogue();
+            
+            if (searchDialogue.ShowDialog() == true)
+            {
+                
+
+            }
+            var keywordArray = (searchDialogue.Keywords).Trim().Split(';');
+            List<Recipe> foundRecipeList = new List<Recipe>();
+
+
+            using (recipesContext = new RecipesContext())
+            {
+
+                var recipeList = (from a in recipesContext.Recipes
+                                  orderby a.Title
+                                  select a).ToList();
+                foreach (var x in recipeList)
+                {
+                    List<string> recipeProperties = new List<string>();
+                    Ingredient ingredient = (from i in recipesContext.Ingredients where i.RecipeID == x.RecipeID select i).First();
+                    recipeProperties.Add(ingredient.Description);
+                    recipeProperties.Add(x.Comment);
+                    recipeProperties.Add(x.Directions);
+                    recipeProperties.Add(x.RecipeID.ToString());
+                    recipeProperties.Add(x.RecipeType);
+                    recipeProperties.Add(x.ServingSize);
+                    recipeProperties.Add(x.Title);
+                    recipeProperties.Add(x.Yield);
+
+                    bool found = SearchLibrary.SearchLibrary.IsKeywordInList(keywordArray, recipeProperties);
+                    recipeProperties = null;
+                    if (found)
+                    {
+                        foundRecipeList.Add(x);
+                    }
+                    
+                }
+
+            }
+            
+            TitleListBox.DataContext = (from a in foundRecipeList
+                                        orderby a.Title
+                                        select a).ToArray();
+            if (foundRecipeList.Count == 0)
+            {
+                displayMessage("No Recipe matching the keywords searched.");
+            }
+            foundRecipeList = null;
+        }
+
     }
 }

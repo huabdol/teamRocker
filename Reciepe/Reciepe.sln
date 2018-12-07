@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeOrganizerDatabase", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeTestdbInitializer", "RecipeTestdbInitializer\RecipeTestdbInitializer.csproj", "{CD4D29C1-A1A4-4559-9F78-5300512F7FE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchLibrary", "SearchLibrary\SearchLibrary.csproj", "{6C3E608A-3040-4AED-B897-9894A8F59B78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchLibraryUnitTesting", "SearchLibraryUnitTesting\SearchLibraryUnitTesting.csproj", "{8A9BEE6E-1D9C-441C-8811-FA83C0FC5EDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{CD4D29C1-A1A4-4559-9F78-5300512F7FE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD4D29C1-A1A4-4559-9F78-5300512F7FE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD4D29C1-A1A4-4559-9F78-5300512F7FE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C3E608A-3040-4AED-B897-9894A8F59B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C3E608A-3040-4AED-B897-9894A8F59B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C3E608A-3040-4AED-B897-9894A8F59B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C3E608A-3040-4AED-B897-9894A8F59B78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A9BEE6E-1D9C-441C-8811-FA83C0FC5EDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A9BEE6E-1D9C-441C-8811-FA83C0FC5EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A9BEE6E-1D9C-441C-8811-FA83C0FC5EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A9BEE6E-1D9C-441C-8811-FA83C0FC5EDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

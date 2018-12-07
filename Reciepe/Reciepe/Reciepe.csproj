@@ -65,6 +65,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="RecipeDataEntities.cs" />
+    <Compile Include="SearchDialogue.xaml.cs">
+      <DependentUpon>SearchDialogue.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,6 +80,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SearchDialogue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -109,6 +116,10 @@
     <ProjectReference Include="..\RecipeOrganizerDatabase\RecipeOrganizerDatabase.csproj">
       <Project>{1E86244B-B28F-4299-8A57-581AEF692A11}</Project>
       <Name>RecipeOrganizerDatabase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SearchLibrary\SearchLibrary.csproj">
+      <Project>{6c3e608a-3040-4aed-b897-9894a8f59b78}</Project>
+      <Name>SearchLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
