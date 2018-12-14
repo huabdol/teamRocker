@@ -90,10 +90,12 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="IngredientsTB" HorizontalAlignment="Left" Height="87" Margin="645,584,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="429" IsReadOnly="True" Grid.Column="1"/>
+        <TextBox x:Name="IngredientsTB" HorizontalAlignment="Left" Height="87" Margin="645,688,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="429" IsReadOnly="True" Grid.Column="1"/>
         <Button x:Name="RefreshButton" Content="Refresh" Grid.Column="1" HorizontalAlignment="Left" Margin="1147,73,0,0" VerticalAlignment="Top" Width="98" FontSize="18" Click="RefreshButton_Click"/>
         <Button x:Name="ExitButton" Content="Exit" Grid.Column="1" HorizontalAlignment="Left" Margin="1147,150,0,0" VerticalAlignment="Top" Width="98" Height="29" Click="ExitButton_Click"/>
         <Button x:Name="SearchBtn" Content="Search" Grid.Column="1" HorizontalAlignment="Left" Margin="1147,218,0,0" VerticalAlignment="Top" Width="98" Height="29" Click="SearchBtn_Click"/>
+        <Button x:Name="AddRecipe" Content="Add Recipe" Grid.Column="1" HorizontalAlignment="Left" Margin="1147,294,0,0" VerticalAlignment="Top" Width="98" Height="33" Click="AddRecipe_Click"/>
+        <ListBox x:Name="IngredientsListbox" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="645,571,0,0" VerticalAlignment="Top" Width="429"/>
 
     </Grid>
 </Window>

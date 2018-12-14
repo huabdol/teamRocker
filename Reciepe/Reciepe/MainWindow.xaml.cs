@@ -55,11 +55,37 @@ namespace Reciepe
             {
                 throw new Exception();
             }
-            TitleListBox.DataContext = (from a in recipesContext.Recipes
-                                        orderby a.Title
-                                        select a).ToArray();
+
+
+
+            //TitleListBox.DataContext 
+            var recipeArray = (from a in recipesContext.Recipes
+                               orderby a.RecipeType, a.Title
+                               select a).ToArray();
+
+            TitleListBox.DataContext = FilterRecipeType(recipeArray);
+
+
             displayLabel.Content = null;
 
+        }
+        private List<Recipe> FilterRecipeType(Recipe[] recipesArray)
+        {
+            List<Recipe> reciepes = new List<Recipe>();
+            foreach (var recipe in recipesArray)
+            {
+                if (recipe.RecipeType.Trim().Equals("Meal Item"))
+                {
+                    MealItem mealItem = new MealItem(recipe.RecipeID, recipe.Title, recipe.Yield, recipe.ServingSize, recipe.Directions, recipe.Comment, recipe.RecipeType);
+                    reciepes.Add(mealItem);
+                }
+                else
+                {
+                    Dessert dessert = new Dessert(recipe.RecipeID, recipe.Title, recipe.Yield, recipe.ServingSize, recipe.Directions, recipe.Comment, recipe.RecipeType);
+                    reciepes.Add(dessert);
+                }
+            }
+            return reciepes;
         }
         public void displayMessage(string message)
         {
@@ -67,56 +93,8 @@ namespace Reciepe
 
         }
 
-        private void Window_Closed(object sender, EventArgs e)
-        {
-        //    using (recipesContext = new RecipesContext())
-        //    {
 
-        //    List<Recipe> recipes = (from a in recipesContext.Recipes
-        //                            orderby a.RecipeID
-        //                            select a).ToList();
-
-        //        XDocument document = new XDocument(
-        //          new XDeclaration("1.0", "utf-8", "yes"),
-        //          new XComment("Contents of authors table in Pubs database"),
-        //          new XElement("Recipes",
-        //              from r in recipes  
-        //              select new XElement("Recipe",
-        //                         new XElement("RecipeID", r.RecipeID),
-        //                         new XElement("Title", r.Title),
-        //                         new XElement("Yield", r.Yield),
-        //                         new XElement("ServingSize", r.ServingSize),
-        //                         new XElement("Directions", r.Directions),
-        //                         new XElement("Comment", r.Comment),
-        //                         new XElement("RecipeType", r.RecipeType))
-        //          )
-        //        );
-
-        //        document.Save(@"..\..\..\Recipes.xml");
-
-        //        List<Ingredient> ingredients = (from i in recipesContext.Ingredients
-        //                                orderby i.IngredientID
-        //                                select i).ToList();
-
-        //        document = new XDocument(
-        //          new XDeclaration("1.0", "utf-8", "yes"),
-        //          new XComment("Contents of authors table in Pubs database"),
-        //          new XElement("Ingredients",
-        //              from i in ingredients 
-        //              select new XElement("Ingredient",
-        //                         new XElement("IngredientID", i.IngredientID),
-        //                         new XElement("Description", i.Description),
-        //                         new XElement("RecipeID", i.RecipeID))
-        //          )
-        //        );
-
-        //        document.Save(@"..\..\..\Ingredients.xml");
-
-
-          }
-    //}
-
-    private void TitleListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TitleListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             using (recipesContext = new RecipesContext())
             {
@@ -124,15 +102,16 @@ namespace Reciepe
                 if (TitleListBox.SelectedItem != null)
                 {
                     Recipe recipe = (Recipe)TitleListBox.SelectedItem;
-                    Ingredient ingredient = (from i in recipesContext.Ingredients where i.RecipeID == recipe.RecipeID select i).First();
-
+                    //Ingredient ingredient = (from i in recipesContext.Ingredients where i.RecipeID == recipe.RecipeID select i).First();
+                    var ingredient = (from i in recipesContext.Ingredients where i.RecipeID == recipe.RecipeID select i).ToList();
 
                     TitleTB.Text = recipe.Title;
                     YieldTB.Text = recipe.Yield;
                     ServignSizeTB.Text = recipe.ServingSize;
                     DirectionsTB.Text = recipe.Directions;
                     CommentsTB.Text = recipe.Comment;
-                    IngredientsTB.Text = ingredient.Description;
+                    //IngredientsTB.Text = ingredient.Description;
+                    IngredientsListbox.DataContext = ingredient;
                     RecipeTypeTB.Text = recipe.RecipeType;
                 }
             }
@@ -205,7 +184,7 @@ namespace Reciepe
                 );
 
                 document.Save(@"..\..\..\Ingredients.xml");
-                
+
             }
             Environment.Exit(0);
 
@@ -213,11 +192,13 @@ namespace Reciepe
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
+            RefreshButton_Click(null, null);
+
             SearchDialogue searchDialogue = new SearchDialogue();
-            
+
             if (searchDialogue.ShowDialog() == true)
             {
-                
+
 
             }
             var keywordArray = (searchDialogue.Keywords).Trim().Split(';');
@@ -228,7 +209,7 @@ namespace Reciepe
             {
 
                 var recipeList = (from a in recipesContext.Recipes
-                                  orderby a.Title
+                                  orderby a.RecipeType, a.Title
                                   select a).ToList();
                 foreach (var x in recipeList)
                 {
@@ -247,15 +228,26 @@ namespace Reciepe
                     recipeProperties = null;
                     if (found)
                     {
-                        foundRecipeList.Add(x);
+                        if (x.RecipeType.Trim().Equals("Meal Item"))
+                        {
+                            MealItem mealItem = new MealItem(x.RecipeID, x.Title, x.Yield, x.ServingSize, x.Directions, x.Comment, x.RecipeType);
+                            foundRecipeList.Add(mealItem);
+                        }
+                        else
+                        {
+                            Dessert dessert = new Dessert(x.RecipeID, x.Title, x.Yield, x.ServingSize, x.Directions, x.Comment, x.RecipeType);
+                            foundRecipeList.Add(dessert);
+                        }
+
+
                     }
-                    
+
                 }
 
             }
-            
+
             TitleListBox.DataContext = (from a in foundRecipeList
-                                        orderby a.Title
+                                        orderby a.RecipeType, a.Title
                                         select a).ToArray();
             if (foundRecipeList.Count == 0)
             {
@@ -264,5 +256,18 @@ namespace Reciepe
             foundRecipeList = null;
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditWindow addEditWindow = new AddEditWindow();
+
+            if(addEditWindow.ShowDialog()==true)
+            { }
+
+        }
     }
 }

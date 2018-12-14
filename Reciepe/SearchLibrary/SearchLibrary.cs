@@ -10,7 +10,7 @@ namespace SearchLibrary
     {
         public static bool IsKeywordInList(string[] s, List<string> l)
         {
-            
+            bool isKeyWordExist = false;
             foreach (var x in s)
             {
                 if (!string.IsNullOrEmpty(x))
@@ -18,14 +18,19 @@ namespace SearchLibrary
                     foreach (var y in l)
                     {
                         if ((y.ToLower()).Contains(x.ToLower()) && !string.IsNullOrEmpty(y))
-
                         {
-                            return true;
+                            isKeyWordExist =  true;
+                            break;
                         }
+                        else {
+                            isKeyWordExist = false;
+                        }
+
                     }
-                }         
+                }
+
             }
-            return false;
+            return isKeyWordExist;
         }
     }
 }

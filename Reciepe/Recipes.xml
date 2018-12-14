@@ -108,7 +108,7 @@ fat.</Comment>
     <RecipeID>5</RecipeID>
     <Title>Caribbean Pink Beans</Title>
     <Yield>16 servings    </Yield>
-    <ServingSize>1/2 cup
+    <ServingSize>half cup
 Each serving provides:
 Calories:  133
 Total fat:  Less than 1 g
@@ -490,5 +490,32 @@ Saute prosciutto (how much depends on how much you like it) until
 crispy and add to soup along with fried oysters.</Directions>
     <Comment></Comment>
     <RecipeType>Meal Item   </RecipeType>
+  </Recipe>
+  <Recipe>
+    <RecipeID>22</RecipeID>
+    <Title>test</Title>
+    <Yield>test</Yield>
+    <ServingSize>test</ServingSize>
+    <Directions>test</Directions>
+    <Comment></Comment>
+    <RecipeType>Meal Item</RecipeType>
+  </Recipe>
+  <Recipe>
+    <RecipeID>23</RecipeID>
+    <Title>Sprint5</Title>
+    <Yield>Sprint5</Yield>
+    <ServingSize>123</ServingSize>
+    <Directions>Sprint5</Directions>
+    <Comment></Comment>
+    <RecipeType>Dessert Item</RecipeType>
+  </Recipe>
+  <Recipe>
+    <RecipeID>24</RecipeID>
+    <Title>Mango Curd</Title>
+    <Yield>Curd</Yield>
+    <ServingSize>12</ServingSize>
+    <Directions>Curd packet</Directions>
+    <Comment>Mango cake</Comment>
+    <RecipeType>Dessert Item</RecipeType>
   </Recipe>
 </Recipes>

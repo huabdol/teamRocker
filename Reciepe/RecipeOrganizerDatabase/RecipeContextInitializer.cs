@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace RecipeOrganizerDatabase
 {
-    public class RecipesContextInitializer : DropCreateDatabaseIfModelChanges<RecipesContext>
+    public class RecipesContextInitializer : DropCreateDatabaseAlways<RecipesContext>
     
     {
         protected override void Seed(RecipesContext context)

@@ -25,5 +25,25 @@ namespace RecipeOrganizerDatabase
         [Required, MaxLength(30)]
         public string RecipeType { get; set; }
 
+        public Recipe(int id, string title, string yield,string servingsize, string directions,string comment,string reciepetype)
+        {
+            RecipeID = id;
+            Title = title;
+            Yield = yield;
+            ServingSize = servingsize;
+            Directions = directions;
+            Comment = comment;
+            RecipeType = reciepetype;
+        }
+        public Recipe(string title)
+        {
+            Title = title;
+        }
+        public Recipe()
+        {
+
+        }
+        
+
     }
 }

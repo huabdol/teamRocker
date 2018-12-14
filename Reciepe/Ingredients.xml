@@ -851,4 +851,34 @@
     <Description>Salt and pepper to taste</Description>
     <RecipeID>21</RecipeID>
   </Ingredient>
+  <Ingredient>
+    <IngredientID>171</IngredientID>
+    <Description>test1</Description>
+    <RecipeID>22</RecipeID>
+  </Ingredient>
+  <Ingredient>
+    <IngredientID>172</IngredientID>
+    <Description>test2</Description>
+    <RecipeID>22</RecipeID>
+  </Ingredient>
+  <Ingredient>
+    <IngredientID>173</IngredientID>
+    <Description>Ingredient1 Sprint5</Description>
+    <RecipeID>23</RecipeID>
+  </Ingredient>
+  <Ingredient>
+    <IngredientID>174</IngredientID>
+    <Description>Ingredient2 Sprint5</Description>
+    <RecipeID>23</RecipeID>
+  </Ingredient>
+  <Ingredient>
+    <IngredientID>175</IngredientID>
+    <Description>Ingredient mango1</Description>
+    <RecipeID>24</RecipeID>
+  </Ingredient>
+  <Ingredient>
+    <IngredientID>176</IngredientID>
+    <Description>ingredient mango2</Description>
+    <RecipeID>24</RecipeID>
+  </Ingredient>
 </Ingredients>
